@@ -50,26 +50,25 @@ body {
 }
 
 .animate-logo {
-    animation: animateLogo 2.2s ease-in-out forwards;
+    animation: animateLogo 0.7s ease-in-out forwards;
     opacity: 0;
-   
-   animation-delay: 850ms;
+    transform: scale(0.4);
 }
 
 @keyframes animateLogo {
     0% {
         opacity: 0;
-        
+        transform: scale(0.4);
     }
     100% {
         opacity: 1;
-        
+        transform: scale(1);
     }
 }
 
 .animate-heading {
-    animation: animateTxt 0.75s ease-in-out forwards;
-    
+    animation: animateTxt 0.5s ease-in-out forwards;
+    animation-delay: 350ms;
     opacity: 0;
     transform: scale(0.5);
 }
@@ -131,44 +130,75 @@ body {
 
 /* CTA Button */
 .cta-button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
     padding: 1.125rem 2.75rem;
-    background: rgba(255, 255, 255, 0.12);
-    color: #ffffff;
+    background: rgba(12, 61, 130, 0.08);
+    color: #f4f8ff;
     font-size: 1.125rem;
     font-weight: 600;
     text-decoration: none;
     border-radius: 14px;
-    border: 2px solid rgba(255, 255, 255, 0.25);
+    border: 1.5px solid rgba(139, 185, 255, 0.55);
     cursor: pointer;
     box-shadow:
-        0 4px 16px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+        inset 0 0 0 1px rgba(139, 185, 255, 0.18),
+        0 18px 40px rgba(9, 34, 70, 0.28);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
     position: relative;
     letter-spacing: 0.5px;
+    overflow: hidden;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
 }
 
 .cta-button:hover {
-    transform: translateY(-3px) scale(1.02);
-    background: rgba(255, 255, 255, 0.18);
-    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
     box-shadow:
-        0 8px 24px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        inset 0 0 0 1px rgba(139, 185, 255, 0.32),
+        0 22px 46px rgba(9, 34, 70, 0.3);
+    border-color: rgba(139, 185, 255, 0.75);
 }
 
 .cta-button:active {
-    transform: translateY(-1px) scale(1);
+    transform: translateY(0);
     box-shadow:
-        0 2px 8px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        inset 0 0 0 1px rgba(139, 185, 255, 0.28),
+        0 12px 28px rgba(9, 34, 70, 0.28);
 }
 
 .cta-button span {
     position: relative;
     z-index: 1;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: none;
+    display: none;
+}
+
+.cta-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+    opacity: 1;
+    transform: translateX(0);
+    color: rgba(139, 185, 255, 0.9);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.cta-button:hover .cta-icon {
+    transform: translateX(4px);
+}
+
+.cta-button:active .cta-icon {
+    transform: translateX(6px);
 }
 
 /* Subtext */
